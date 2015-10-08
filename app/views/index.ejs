@@ -1,0 +1,67 @@
+<!--*****************************************
+	Developed by Carlos Albaladejo Pérez, 2015.	
+********************************************* -->
+
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>	
+	<title><%= title %></title>
+
+	<!-- CSS STYLESHEETS -->
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'> <!--UBUNTU FONT! from Google Fonts-->	
+	<link rel="stylesheet" type="text/css" href="/css/main_style.css">
+	<link rel="stylesheet" type="text/css" href="/css/menu_style.css">
+</head>
+<body>	
+	<!-- LIBRARIES LOADING -->
+	<!-- Load local libraries -->
+	<script type="text/javascript" src="/lib/angular/angular.js"></script>
+	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+	
+	<!-- Load the articles module -->
+	<script type="text/javascript" src="/articles/articles.client.module.js"></script>
+	<script type="text/javascript" src="/articles/controllers/articles.client.controller.js"></script>
+	<script type="text/javascript" src="/articles/services/articles.client.service.js"></script>
+	<script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>
+
+	<!-- Load the menu module -->
+	<script type="text/javascript" src="/menu/menu.client.module.js"></script>
+	<script type="text/javascript" src="/menu/controllers/menu.client.controller.js"></script>
+	<!--<script type="text/javascript" src="/menu/config/menu.client.routes.js"></script>-->
+
+	<script type="text/javascript" src="/maincontent/maincontent.client.module.js"></script>
+
+	<!-- Load the users module -->
+	<script type="text/javascript" src="/users/users.client.module.js"></script>
+	<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+	<!-- Bootstrap AngularJS application -->
+	<script type="text/javascript" src="/application.js"></script>
+
+	<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+
+	<!-- Render the user object -->
+	<script type="text/javascript">
+		window.user = <%- user || 'null' %>;
+	</script>
+
+	<!-- ************************************************************************************************* -->	
+	<!-- 										DOCUMENT HIERARCHY 										   -->	
+	<!-- ************************************************************************************************* -->	
+	<header></header>
+	
+	<!-- I load a different html view if the admin is logged in or not. -->
+	<nav class="mainnav" ng-controller="MenuController" ng-include="getMenuInclude()"></nav>
+		
+	<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>	
+
+	<footer></footer>
+	<!-- Render AngularJS views  -->	
+
+	<aside></aside>
+
+	<footer></footer>
+	
+</body>
+</html>
