@@ -7,6 +7,22 @@
   margin: auto;
 }
 
+.firstrootmenuelement{
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width: 1px;
+}
+
+.rootmenuelement{
+  border-right-style: solid;
+  border-width: 1px;
+}
+
+.submenu{
+  position: absolute;
+  width: 250px;
+}
+
 /*Strip the ul of padding and list styling*/
 ul {
   list-style-type:none; /*Tho hide list points*/
@@ -18,7 +34,7 @@ ul {
 li {
   display:inline; /* This, and float:left to show the menu horizontally */
   float: left;
-  margin-right: 1px;
+  position: relative;
 }
 ul ul li{
     position: relative;
@@ -40,12 +56,21 @@ li a {
   -o-transition: background 0.3s, color 0.25s;
   transition: background 0.3s, color 0.25s;
   transition-timing-function: ease-out;
+
+  background: #feccb1; /* Old browsers */
+  background: -moz-linear-gradient(top,  #feccb1 0%, #ff8900 50%, #ed7e00 51%, #fb955e 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feccb1), color-stop(50%,#ff8900), color-stop(51%,#ed7e00), color-stop(100%,#fb955e)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */  
 }
 
 /*Hover state for top level links*/
 li:hover a {
-  background: #ff8900;
   color: black;
+  background: #f3f3f3;
 }
 
 /*Style for dropdown links*/
@@ -53,13 +78,13 @@ li:hover ul a {
   background: #f3f3f3;
   color: #2f3036;
   height: 40px;
-  line-height: 40px;
+  line-height: 40px;  
 }
 
 /*Hover state for dropdown links*/
 li:hover ul a:hover {
   background: #ff8900;
-  color: black;
+  color: black; 
 }
 
 /*Hide dropdown links until they are needed*/
