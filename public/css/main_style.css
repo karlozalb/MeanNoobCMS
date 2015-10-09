@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
 }
 
 body{
@@ -9,7 +10,7 @@ body{
 	width: 100%;
 	height: 100%;
 	margin: auto;
-	background-image: url("../img/stripebg.png");
+	background-image: url("../img/page-background.png");
     background-repeat: repeat-y repeat-x;
 }
 
@@ -29,10 +30,25 @@ body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */	
 }
 
-.maincontent{
+.parentcontainer{
 	display: block;
+	width: 940px;
+	height: 100%;
+	margin: auto;
+}
+
+.maincontent{
+	width: 60%;
+	height: 100%;
 	float: left;
-	width: 100%;
+	background-image: url("../img/article-background.png");
+	background-repeat: repeat-x repeat-y;
+}
+
+.sidebar{
+	width: 40%;
+	height: 100%;
+	float: right;
 }
 
 #hellousertext{
@@ -48,11 +64,22 @@ body{
 	left: 0;
 }
 
-header{
+.mainheader{
 	background-image: url("../img/header-desktop.png");
 	height: 180px;
 	width: 940px;
 	margin: auto;
+}
+
+.articleheader{
+	color: white;
+}
+
+.articlecontent{
+	color: white;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
 }
 
 @media screen and (max-width : 760px){

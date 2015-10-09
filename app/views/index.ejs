@@ -8,7 +8,7 @@
 	<title><%= title %></title>
 
 	<!-- CSS STYLESHEETS -->
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'> <!--UBUNTU FONT! from Google Fonts-->	
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'> <!--UBUNTU FONT! from Google Fonts-->
 	<link rel="stylesheet" type="text/css" href="/css/main_style.css">
 	<link rel="stylesheet" type="text/css" href="/css/menu_style.css">
 </head>
@@ -49,17 +49,15 @@
 	<!-- ************************************************************************************************* -->	
 	<!-- 										DOCUMENT HIERARCHY 										   -->	
 	<!-- ************************************************************************************************* -->	
-	<header></header>
+	<header class="mainheader"></header>
 	
 	<!-- I load a different html view if the admin is logged in or not. -->
 	<nav class="mainnav" ng-controller="MenuController" ng-include="getMenuInclude()"></nav>
-		
-	<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>	
-
-	<footer></footer>
-	<!-- Render AngularJS views  -->	
-
-	<aside></aside>
+	
+	<div class="parentcontainer">
+		<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>
+		<aside class="sidebar"></aside>
+	</div>	
 
 	<footer></footer>
 	

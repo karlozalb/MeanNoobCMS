@@ -1,1 +1,22 @@
-<div></div>
+<section data-ng-controller="ArticlesController" data-ng-init="find()">
+	<div data-ng-repeat="article in articles">
+		<header class="articleheader">
+			<a data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.title"></a>
+			<small data-ng-bind="article.created | date:'medium'"></small>
+			<small data-ng-bind="article.creator.fullName"></small>
+		</header>
+		<p class="articlecontent" data-ng-bind="article.content"></p>
+	</div>
+</section>
+<!--<div data-ng-controller="ArticlesController" data-ng-init="find()">
+	<ul>
+		<li data-ng-repeat="article in articles">
+			<a data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.title"></a>
+			<br>
+			<small data-ng-bind="article.created | date:'medium'"></small>
+			<small>/</small>
+			<small data-ng-bind="article.creator.fullName"></small>
+			<p data-ng-bind="article.content"></p>
+		</li>
+	</ul>	
+</div>-->
