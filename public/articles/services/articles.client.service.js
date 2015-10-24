@@ -12,3 +12,17 @@ angular.module('articles').factory('Articles', ['$resource', function($resource)
         }
     });
 }]);
+
+	// Create the 'articles' service
+angular.module('articles').factory('Comments', ['$resource', function($resource) {
+    return $resource('api/comments/:commentId',{
+    	commentId: '@_id',
+    }, {
+        update: {
+            method: 'PUT',
+            url: 'api/comments/:commentId',
+            params: { commentId: '@_id' }
+        }
+    });
+}]);
+

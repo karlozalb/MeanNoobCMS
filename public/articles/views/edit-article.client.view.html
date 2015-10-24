@@ -10,9 +10,15 @@
 			</div>
 		</div>
 		<div>
+			<label for="summary">Content</label>
+			<div>
+				<textarea data-ng-model="article.summary" id="summary" cols="30" rows="10" placeholder="Content"></textarea>
+			</div>
+		</div>
+		<div>
 			<label for="content">Content</label>
 			<div>
-				<textarea data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+				<textarea ui-tinymce="tinymceOptions" data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
 			</div>
 		</div>
 		<div>
@@ -23,5 +29,21 @@
 			<strong data-ng-bind="error"></strong>
 		</div>
 	</form>
+	<div data-ng-repeat="comment in article.comments">        
+	            <small class="comment">
+	                <em>Posted on</em>
+	                <em data-ng-bind="comment.date"></em>
+	                <em>by</em>
+	                <em data-ng-bind="comment.author"></em>
+	            </small>
+	            <p class="comment" data-ng-bind="comment.content"></p>
+	            <form data-ng-submit="approveComment()" novalidate>
+	            	<input class="approvecommentcheckbox" data-ng-model="comment.approved" id="approved" type="checkbox" value="Approve comment">Approved comment</input>
+	            	<input type="submit" value="Save"/>
+	        	</form>
+	        	<form data-ng-submit="deleteComment(comment._id)" novalidate>
+	        		<input type="submit" value="Delete comment"/>
+	        	</form>
+        	</div>    
 	</div>
 </section>

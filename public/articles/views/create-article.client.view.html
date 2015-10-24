@@ -16,9 +16,21 @@
 			</div>
 		</div>
 		<div>
+			<label for="tags">Tag</label>
+			<div>
+				<input type="text" data-ng-model="tags" id="tags" placeholder="Tags" required>
+			</div>
+		</div>
+		<div>
+			<label for="content">Summary</label>
+			<div>
+				<textarea data-ng-model="summary" id="summary" cols="30" rows="10" placeholder="Summary"></textarea>
+			</div>
+		</div>
+		<div>
 			<label for="content">Content</label>
 			<div>
-				<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+				<textarea ui-tinymce="tinymceOptions" data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
 			</div>
 		</div>
 		<div>

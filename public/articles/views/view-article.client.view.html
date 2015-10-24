@@ -1,16 +1,46 @@
 <!-- The article view -->
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-    <h1 data-ng-bind="article.title"></h1>
-    <!-- Show the editing buttons to the article creator -->
-    <div data-ng-show="authentication.user._id == article.creator._id">
-        <a href="/#!/articles/{{article._id}}/edit">edit</a>
-        <a href="#" data-ng-click="delete();">delete</a>
-    </div>
+<section data-ng-controller="ArticlesController as ac" data-ng-init="findOne()">
+    <h1 class="articleheader" data-ng-bind="article.title"></h1>
+    <!-- Show the editing buttons to the article creator --> 
     <small>
         <em>Posted on</em>
         <em data-ng-bind="article.created | date:'mediumDate'"></em>
         <em>by</em>
         <em data-ng-bind="article.creator.fullName"></em>
     </small>
-    <p data-ng-bind="article.content"></p>
+    <p class="articlecontent" ng-bind-html="article.content"></p>
+    <p class="comment" ng-if="commentsCount > 0">Hay un total de {{commentsCount}} comentarios.</p>
+    <div data-ng-repeat="comment in article.comments">
+              
+        <small class="comment">
+            <em>Posted on</em>
+            <em data-ng-bind="comment.date"></em>
+            <em>by</em>
+            <em data-ng-bind="comment.author"></em>
+        </small>
+        <p ng-if="!comment.approved" class="comment">Comentario aguardando moderación</p>  
+        <p ng-if="comment.approved" class="comment" data-ng-bind="comment.content"></p>        
+    </div>
+    <form name="submitCommentForm" data-ng-submit="createComment()" novalidate>
+        <div>
+            <label for="author">Autor:</label>
+            <div>
+                <input type="text" data-ng-model="author" id="author" placeholder="Anónimo" required>
+            </div>
+        </div>       
+        <div>
+            <label for="content">Comentario:</label>
+            <div>
+                <textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+            </div>
+        </div>
+        <div vc-recaptcha key="ac.publicKey"></div>
+        <div>
+            <input type="submit">
+        </div>
+        <!-- The error message element -->
+        <div data-ng-show="error">
+            <strong data-ng-bind="error"></strong>
+        </div>
+    </form>
 </section>

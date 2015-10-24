@@ -6,92 +6,139 @@
 }
 
 body{
-	background-color:black;
-	width: 100%;
-	height: 100%;
-	margin: auto;
-	background-image: url("../img/page-background.png");
-    background-repeat: repeat-y repeat-x;
+		display: table;
+		background-color:black;
+		width: 100%;
+		margin: auto;
+		background-image: url("../img/page-background.png");
+	    background-repeat: repeat-y repeat-x;
 }
 
-.mainnav{
-	display: block;
-	float: left;
-	height: 50px;
-	width: 100%;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feccb1+0,ff8900+50,ed7e00+51,fb955e+100 */
-	background: #feccb1; /* Old browsers */
-	background: -moz-linear-gradient(top,  #feccb1 0%, #ff8900 50%, #ed7e00 51%, #fb955e 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feccb1), color-stop(50%,#ff8900), color-stop(51%,#ed7e00), color-stop(100%,#fb955e)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #feccb1 0%,#ff8900 50%,#ed7e00 51%,#fb955e 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */	
-}
-
-.parentcontainer{
-	display: block;
-	width: 940px;
-	height: 100%;
-	margin: auto;
-}
-
-.maincontent{
-	width: 60%;
-	height: 100%;
-	float: left;
-	background-image: url("../img/article-background.png");
-	background-repeat: repeat-x repeat-y;
-}
-
-.sidebar{
-	width: 40%;
-	height: 100%;
-	float: right;
-}
-
-#hellousertext{
-	color: white;
-	position: absolute;
-	top: 0;
-	left: 100px;
-}
-
-#signoutlink{
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.mainheader{
-	background-image: url("../img/header-desktop.png");
-	height: 180px;
-	width: 940px;
-	margin: auto;
-}
-
-.articleheader{
-	color: white;
+.maincontent{ /*Check the specific resolution media queries to see additional rules for this element*/
+		padding: 5%;	
+		float: left;
+		background-image: url("../img/article-background.png");
+		background-repeat: repeat-x repeat-y;
 }
 
 .articlecontent{
+		color: white;
+	    font-weight: 400;
+	    font-size: 18px;
+	    line-height: 24px;
+	    height: 100%;
+	    width: 100%;
+}	
+
+div.articlecontent ol {
+    display: block;
+	list-style-type: disc;
+	margin-before: 1em;
+	margin-after: 1em;
+	margin-start: 0;
+	margin-end: 0;
+	padding-start: 40px;
+}
+
+  /*Create a horizontal list with spacing*/
+div.articlecontent ol li {
+    display:block; /* This, and float:left to show the menu horizontally */
+    float: left;
+    position: relative;
+}
+
+.comment{
 	color: white;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
 }
 
-@media screen and (max-width : 760px){
-	body{
-		/*background-color:black;*/
-		width: 100%;
+.approvecommentcheckbox{
+	display: inline;
+}
+
+.g-recaptcha{
+	height: 50px;
+}
+
+@media only screen and (min-width : 761px), only screen and (min-device-width : 761px)){
+
+	.parentcontainer{
+		display: table;
+		width: 940px;
+		margin: auto;
+	}
+
+	.maincontent{
+		width: 60%;
+	}	
+
+	.sidebar{
+		width: 40%;
 		height: 100%;
+		float: right;
 	}
+
+	#hellousertext{
+		color: white;
+		position: absolute;
+		top: 0;
+		left: 100px;
+	}
+
+	#signoutlink{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.mainheader{
+		background-image: url("../img/header-desktop.png");
+		height: 180px;
+		width: 940px;
+		margin: auto;
+	}
+
+	/*Articles*/
+
+	.articleheader{
+		color: white;
+	}
+
+	.excerpt{
+		width: 100%;
+		display: table;
+		float: none;
+	}
+
+	.article-readmore{
+		position: relative;
+		display: block;
+		float: left;
+	}
+	
 }
 
-@media screen and (max-width : 760px){
-	body{
-  		width: 100%;
+@media only screen and (max-width : 760px), only screen and (max-device-width : 760px)){
+
+	.mainheader{
+		background-image: url("../img/header-mobile.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 80%;
+		height: 180px;
+		width: 100%;
+		margin: auto;
 	}
+
+	.parentcontainer{
+		display: table;
+		width: 100%;
+	}
+
+	.sidebar{
+		display: none;
+	}
+
+	.maincontent{
+		width: 90%;
+	}	
 }

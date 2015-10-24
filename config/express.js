@@ -24,6 +24,8 @@ module.exports = function() {
 		app.use(compress());
 	}
 
+	global.recaptcha = config.recaptcha;	
+
 	// Use the 'body-parser' and 'method-override' middleware functions
 	app.use(bodyParser.urlencoded({
 		extended: true

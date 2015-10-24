@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <!--*****************************************
 	Developed by Carlos Albaladejo Pérez, 2015.	
 ********************************************* -->
-
-<!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org">
 <head>	
 	<title><%= title %></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- CSS STYLESHEETS -->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'> <!--UBUNTU FONT! from Google Fonts-->
 	<link rel="stylesheet" type="text/css" href="/css/main_style.css">
 	<link rel="stylesheet" type="text/css" href="/css/menu_style.css">
+	<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
 </head>
 <body>	
 	<!-- LIBRARIES LOADING -->
@@ -18,6 +20,10 @@
 	<script type="text/javascript" src="/lib/angular/angular.js"></script>
 	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="/lib/tinymce-dist/tinymce.js"></script>
+	<script type="text/javascript" src="/lib/angular-ui-tinymce/src/tinymce.js"></script>
+	<script type="text/javascript" src="/lib/angular-sanitize/angular-sanitize.js"></script>
+	<script type="text/javascript" src="/lib/angular-recaptcha/release/angular-recaptcha.min.js"></script>
 	
 	<!-- Load the articles module -->
 	<script type="text/javascript" src="/articles/articles.client.module.js"></script>
@@ -32,6 +38,11 @@
 
 	<script type="text/javascript" src="/maincontent/maincontent.client.module.js"></script>
 
+	<!-- Load TinyMCE configuration -->
+	<script type="text/javascript" src="/tinymce/tinymce.client.controller.js"></script>
+
+	
+
 	<!-- Load the users module -->
 	<script type="text/javascript" src="/users/users.client.module.js"></script>
 	<script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
@@ -39,27 +50,27 @@
 	<!-- Bootstrap AngularJS application -->
 	<script type="text/javascript" src="/application.js"></script>
 
-	<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>	
 
 	<!-- Render the user object -->
 	<script type="text/javascript">
 		window.user = <%- user || 'null' %>;
-	</script>
+	</script>	
 
 	<!-- ************************************************************************************************* -->	
 	<!-- 										DOCUMENT HIERARCHY 										   -->	
 	<!-- ************************************************************************************************* -->	
 	<header class="mainheader"></header>
 	
-	<!-- I load a different html view if the admin is logged in or not. -->
+	<!-- I load a different html view if the admin is logged in or not. -->	
 	<nav class="mainnav" ng-controller="MenuController" ng-include="getMenuInclude()"></nav>
 	
 	<div class="parentcontainer">
-		<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>
+		<section class="maincontent" ng-view></section>
+		<!--<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>-->
 		<aside class="sidebar"></aside>
 	</div>	
 
-	<footer></footer>
-	
+	<footer></footer>	
 </body>
 </html>

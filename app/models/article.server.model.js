@@ -22,15 +22,34 @@ var ArticleSchema = new Schema({
 		default: '',
 		trim: true
 	},
+	summary: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	creator: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	},
+	},	
 	category: {
 		type: String,
 		default: '',
 		trim: true
-	}
+	},
+	tags: [{tag: String}],
+	comments: [{type: Schema.ObjectId,
+				ref: 'Comment'}]
+});
+
+// Set the 'fullname' virtual property
+ArticleSchema.virtual('excerpt').get(function() {
+	return this.content.substring(0,500);
+});
+
+// Configure the 'ArticleSchema' to use getters and virtuals when transforming to JSON
+ArticleSchema.set('toJSON', {
+	getters: true,
+	virtuals: true
 });
 
 // Create the 'Article' model out of the 'ArticleSchema'

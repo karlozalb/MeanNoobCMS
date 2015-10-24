@@ -9,9 +9,21 @@
 			<small data-ng-bind="article.created | date:'medium'"></small>
 			<small>/</small>
 			<small data-ng-bind="article.creator.fullName"></small>
-			<p data-ng-bind="article.content"></p>
+			<p class="articlecontent" data-ng-bind="article.content"></p>
+			<div data-ng-repeat="comment in article.comments">        
+	            <small class="comment">
+	                <em>Posted on</em>
+	                <em data-ng-bind="comment.date"></em>
+	                <em>by</em>
+	                <em data-ng-bind="comment.author"></em>
+	            </small>
+	            <p class="comment" data-ng-bind="comment.content"></p>
+	            <input ng-if="!comment.approved" type="button" ng-click="approveComment(comment)" value="Approve comment">
+	            <input type="button" ng-click="deleteComment(article._id,comment._id)" value="Delete comment">
+        	</div>    
 		</li>
 	</ul>
+
 	<!-- If there are no articles in the list, suggest the user's create a new article -->
 	<div data-ng-hide="!articles || articles.length">
 		No articles yet, why don't you <a href="/#!/articles/create">create one</a>?
