@@ -3,6 +3,7 @@
 
 // Load the module dependencies
 var mongoose = require('mongoose'),
+	mongoosePaginate = require('mongoose-paginate'),
 	Schema = mongoose.Schema;
 
 // Define a new 'ArticleSchema'
@@ -34,17 +35,20 @@ var ArticleSchema = new Schema({
 	category: {
 		type: String,
 		default: '',
-		trim: true
+		trim: true	
 	},
 	tags: [{tag: String}],
 	comments: [{type: Schema.ObjectId,
 				ref: 'Comment'}]
 });
 
-// Set the 'fullname' virtual property
-ArticleSchema.virtual('excerpt').get(function() {
+ArticleSchema.plugin(mongoosePaginate);
+ArticleSchema.index({content: 'text'});
+
+// DEPRECATED Set the 'excerpt' virtual property
+/*ArticleSchema.virtual('excerpt').get(function() {
 	return this.content.substring(0,500);
-});
+});*/
 
 // Configure the 'ArticleSchema' to use getters and virtuals when transforming to JSON
 ArticleSchema.set('toJSON', {

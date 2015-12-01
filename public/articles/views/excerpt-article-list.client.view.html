@@ -1,12 +1,20 @@
-<section data-ng-controller="ArticlesController" data-ng-init="find()">
-	<div class="article-excerpt" data-ng-repeat="article in articles">
+<section data-ng-controller="ArticlesController as ac" data-ng-init="findPaginated()">
+	<div data-ng-repeat="article in articles" ng-class="{'article-excerpt': true,'article-excerpt-web':isWeb(article.category),'article-excerpt-android':isAndroid(article.category),'article-excerpt-gamedev':isGamedev(article.category),'article-excerpt-misc':isMisc(article.category)}">
 		<header class="articleheader">
-			<a data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.title"></a>
-			<small data-ng-bind="article.created | date:'medium'"></small>
-			<small data-ng-bind="article.creator.fullName"></small>
+			<!--<div class="categoryimg">
+				<img ng-src="{{getCategory(article.category)}}"/>
+			</div>-->
+			<a class="articletitle" data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.title"></a>
+		    <div class="articlemetadata">
+				<small data-ng-bind="article.created | date:'medium'"></small>
+				<small data-ng-bind="article.creator.fullName"></small>
+			</div>
 		</header>
-		<p class="articlecontent" data-ng-bind="article.excerpt+'[...]'"></p>
+		<p class="articlesummary" data-ng-bind="article.summary+'[...]'"></p>
 		<a class="article-readmore" data-ng-href="#!/articles/{{article._id}}">...continuar leyendo.</a>
-		<a class="comments-number" ng-if="article.comments.length > 0" data-ng-bind="article.comments.length"></a>
-	</div>
+		<div ng-if="article.comments.length > 0">
+			<a class="comments-number"  data-ng-bind="article.comments.length"></a><a>comentario(s)</a>
+		</div>
+	</div>	
+	<div class="comments-number-container"><a class="pages-number">Página {{currentPageNumber}} de {{numpages}}</a> <a ng-if="currentPageNumber < numpages" ng-href="#!/articles/page/{{currentPageNumber+1}}">ir a la siguiente página</a></div>
 </section>

@@ -10,6 +10,18 @@
 			</div>
 		</div>
 		<div>
+			<label for="category">Category</label>
+			<div>				
+				<input type="text" data-ng-model="article.category" id="category" placeholder="Category" required>
+			</div>
+		</div>
+		<div>
+			<label for="tags">Tag</label>
+			<div>
+				<input type="text" data-ng-model="article.tags" id="tags" placeholder="Tags" required>
+			</div>
+		</div>
+		<div>
 			<label for="summary">Content</label>
 			<div>
 				<textarea data-ng-model="article.summary" id="summary" cols="30" rows="10" placeholder="Content"></textarea>

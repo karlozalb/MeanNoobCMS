@@ -10,6 +10,6 @@
     "angular-recaptcha": "~2.2.5"
   },
   "resolutions": {
-    "angular": "1.4.7"
+    "angular": "1.4.8"
   }
 }

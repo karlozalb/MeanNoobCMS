@@ -1,20 +1,21 @@
 <!-- The article view -->
 <section data-ng-controller="ArticlesController as ac" data-ng-init="findOne()">
-    <h1 class="articleheader" data-ng-bind="article.title"></h1>
-    <!-- Show the editing buttons to the article creator --> 
-    <small>
-        <em>Posted on</em>
-        <em data-ng-bind="article.created | date:'mediumDate'"></em>
-        <em>by</em>
-        <em data-ng-bind="article.creator.fullName"></em>
-    </small>
+   <header class="article-header-single-page">
+            <div class="categoryimg">
+                <img ng-src="{{getCategoryImage(article.category)}}"/>
+            </div>
+            <a class="articletitle" data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.title"></a>
+            <div class="article-metadata-single-page">
+                <small data-ng-bind="article.created | date:'medium'"></small>
+                <small data-ng-bind="article.creator.fullName"></small>
+            </div>
+        </header>
     <p class="articlecontent" ng-bind-html="article.content"></p>
-    <p class="comment" ng-if="commentsCount > 0">Hay un total de {{commentsCount}} comentarios.</p>
-    <div data-ng-repeat="comment in article.comments">
-              
+    <p class="comment-count" ng-if="commentsCount > 0">Hay un total de {{commentsCount}} comentarios.</p>
+    <div data-ng-repeat="comment in article.comments">              
         <small class="comment">
             <em>Posted on</em>
-            <em data-ng-bind="comment.date"></em>
+            <em data-ng-bind="comment.date | date:'medium'"></em>
             <em>by</em>
             <em data-ng-bind="comment.author"></em>
         </small>
@@ -23,18 +24,18 @@
     </div>
     <form name="submitCommentForm" data-ng-submit="createComment()" novalidate>
         <div>
-            <label for="author">Autor:</label>
+            <!--<label for="author">Autor:</label>-->
             <div>
-                <input type="text" data-ng-model="author" id="author" placeholder="Anónimo" required>
+                <input class="comment-author-textbox" type="text" data-ng-model="author" id="author" placeholder="Escribe tu nombre" required>
             </div>
         </div>       
         <div>
-            <label for="content">Comentario:</label>
+            <!--<label for="content">Comentario:</label>-->
             <div>
-                <textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+                <textarea class="comment-content-textarea" data-ng-model="content" id="content" cols="30" rows="10" placeholder="Escribe aquí tu comentario"></textarea>
             </div>
         </div>
-        <div vc-recaptcha key="ac.publicKey"></div>
+        <div class="single-page-comment-recaptcha" vc-recaptcha data-theme="dark" key="ac.publicKey"></div>
         <div>
             <input type="submit">
         </div>

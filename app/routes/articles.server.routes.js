@@ -11,6 +11,15 @@ module.exports = function(app) {
 	app.route('/api/articles')
 	   .get(articles.list)
 	   .post(users.requiresLogin, articles.create);
+
+	app.route('/api/articles/page/:pageNumber')
+	   .get(articles.listFromTo);
+
+	app.route('/api/articles/page/:pageNumber/:searchCriteria')   
+		.get(articles.searchMatches);
+
+	app.route('/api/articles/page/:pageNumber/category/:searchCriteria')   
+		.get(articles.categorySearch);
 	
 	// Set up the 'articles' parameterized routes
 	app.route('/api/articles/:articleId')
@@ -26,20 +35,11 @@ module.exports = function(app) {
 	app.route('/api/comments/:commentId')
 		.get(articles.readComment)
 		.put(users.requiresLogin, articles.approveComment)
-		.delete(users.requiresLogin, articles.deleteComment);
-
-
-	/*app.route('/api/comments/:articleId')
-	   .get(articles.commentsByArticleID);
-
-	app.route('/api/comments/:articleId/:commentId')
-	   .get(articles.readComment);		
-   	   .put(users.requiresLogin, articles.hasAuthorization, articles.commentUpdate); */ 	   
-
-	/*app.route('/api/comments/:commentId')	  
-	   .post(articles.updateAddComment);*/
+		.delete(users.requiresLogin, articles.deleteComment);	
 
 	// Set up the 'articleId' parameter middleware   
 	app.param('articleId', articles.articleByID);
 	app.param('commentId', articles.commentByID);
+	app.param('pageNumber', articles.pageNumber);
+	app.param('searchCriteria', articles.searchCriteria);
 };

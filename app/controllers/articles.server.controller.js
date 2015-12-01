@@ -2,7 +2,7 @@
 'use strict';
 
 // Load the module dependencies
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose'),	
 	Article = mongoose.model('Article'),
 	Comment = mongoose.model('Comment'),
 	request = require('request'),
@@ -43,8 +43,8 @@ exports.create = function(req, res) {
 
 //Add comments
 exports.createComment = function(req,res){
-	console.log(req);
-	var request = require('request');
+	//console.log(req);
+	//var request = require('request');
 	request('https://www.google.com/recaptcha/api/siteverify?secret='+global.recaptcha+'&response='+req.body.captcharesponse, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
 	  	saveCommentInDB(req,res);
@@ -104,6 +104,47 @@ exports.list = function(req, res) {
 	});
 };
 
+// Create a new controller method that retrieves a list of articles
+exports.listFromTo = function(req, res, next) {
+
+	Article.paginate({}, {page: req.page, limit: 6,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
+		if (err) {
+			// If an error occurs send the error message
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp({pageCount: pageCount, output: results});
+		}
+	});	
+};
+
+exports.searchMatches = function(req, res, next) {
+	Article.paginate({$text : {$search : req.searchcriteria}}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
+		if (err) {
+			// If an error occurs send the error message
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp({pageCount: pageCount, output: results});
+		}
+	});		
+};
+
+exports.categorySearch = function(req, res, next){
+	Article.paginate({category : req.searchcriteria}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
+		if (err) {
+			// If an error occurs send the error message
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp({pageCount: pageCount, output: results});
+		}
+	});		
+}
+
 // Create a new controller method that returns an existing article
 exports.read = function(req, res) {
 	res.json(req.article);
@@ -121,6 +162,8 @@ exports.update = function(req, res) {
 	// Update the article fields
 	article.title = req.body.title;
 	article.content = req.body.content;
+	article.category = req.body.category;
+	article.summary = req.body.summary;
 
 	// Try saving the updated article
 	article.save(function(err) {
@@ -139,8 +182,6 @@ exports.update = function(req, res) {
 exports.approveComment = function(req, res) {
 	// Get the article from the 'request' object
 	var comment = req.comment;
-
-	console.log("parametro:"+req.body);
 
 	// Update the article fields
 	comment.approved = req.body.approved;
@@ -218,6 +259,7 @@ exports.commentsByArticleID = function(req, res, next){
 // Create a new controller middleware that retrieves a single existing article
 exports.articleByID = function(req, res, next, id) {
 	// Use the model 'findById' method to find a single article 
+
 	Article.findById(id).populate('creator', 'firstName lastName fullName').populate('comments','author content date approved articleId').exec(function(err, article) {
 		if (err) return next(err);
 		if (!article) return next(new Error('Failed to load article ' + id));
@@ -243,6 +285,17 @@ exports.commentByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+exports.pageNumber = function(req, res, next, page) {
+	req.page = page;
+	next();
+};
+
+exports.searchCriteria = function(req, res, next, criteria) {
+	req.searchcriteria = criteria;
+	next();
+};
+
 
 // Create a new controller middleware that is used to authorize an article operation 
 exports.hasAuthorization = function(req, res, next) {

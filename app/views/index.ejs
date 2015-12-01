@@ -34,6 +34,7 @@
 	<!-- Load the menu module -->
 	<script type="text/javascript" src="/menu/menu.client.module.js"></script>
 	<script type="text/javascript" src="/menu/controllers/menu.client.controller.js"></script>
+	<script type="text/javascript" src="/menu/services/menu.client.services.js"></script>
 	<!--<script type="text/javascript" src="/menu/config/menu.client.routes.js"></script>-->
 
 	<script type="text/javascript" src="/maincontent/maincontent.client.module.js"></script>
@@ -60,7 +61,9 @@
 	<!-- ************************************************************************************************* -->	
 	<!-- 										DOCUMENT HIERARCHY 										   -->	
 	<!-- ************************************************************************************************* -->	
-	<header class="mainheader"></header>
+	<header class="mainheader" ng-controller="SearchController">
+		
+	</header>
 	
 	<!-- I load a different html view if the admin is logged in or not. -->	
 	<nav class="mainnav" ng-controller="MenuController" ng-include="getMenuInclude()"></nav>
@@ -68,9 +71,30 @@
 	<div class="parentcontainer">
 		<section class="maincontent" ng-view></section>
 		<!--<section class="maincontent" ng-controller="MainContentController" ng-include="getMainContentInclude()"></section>-->
-		<aside class="sidebar"></aside>
-	</div>	
+		<!--<aside class="sidebar">
+			<form data-ng-submit="searchArticles()" novalidate>			
+				<input type="text" data-ng-model="searchCriteria" id="searchCriteria" value="search"/>
+				<input type="submit"/>
+			</form>
+		</aside>-->
+	</div>
 
-	<footer></footer>	
+	<footer class="mainfooter">
+		<div class="left-footer-side">
+			<ul class="footer-list">
+				<li>Contenidos:</li>
+				<li><a href="">Android</a></li>
+				<li><a href="">Gamedev</a></li>
+				<li><a href="">Desarrollo web</a></li>
+				<li><a href="">Miscelánea</a></li>
+			</ul>
+		</div>
+		<div class="right-footer-side">
+			<a class="twitterfooter" href="http://twitter.com/karlozalb"><img ng-src="/img/twitterFooter.png"></a>
+		</div>
+		<div class="bottom-footer-side">
+			<p>Página creada usando un stack MEAN por Carlos Albaladejo Pérez. Más info <a href="">aquí</a>.</p>
+		</div>
+	</footer>	
 </body>
 </html>

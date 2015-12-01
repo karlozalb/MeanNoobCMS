@@ -2,8 +2,8 @@
 'use strict';
 
 // Create the 'example' controller
-angular.module('menu').controller('MenuController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('menu').controller('MenuController', ['$scope','$rootScope','Authentication','Articles','PaginatedCategorizedArticles','$routeParams',
+	function($scope,$rootScope,Authentication,$routeParams,PaginatedCategorizedArticles) {
 		// Expose the authentication service
 		$scope.Authentication = Authentication;
 
@@ -28,5 +28,16 @@ angular.module('menu').controller('MenuController', ['$scope', 'Authentication',
 				}		
 			}
 		};
+
+		$scope.searchArticles = function(category){
+            PaginatedCategorizedArticles.get({pageNumber: 1,searchCriteria: category},function(response){
+                $rootScope.articles = response.output;
+                $rootScope.numpages = response.pageCount;
+                $rootScope.currentPageNumber = parseInt($routeParams.pageNumber);                 
+            },function(errorResponse) {
+                // Otherwise, present the user with the error message
+                $scope.error = errorResponse.data.message;
+            });
+        }; 
 	}
 ]);

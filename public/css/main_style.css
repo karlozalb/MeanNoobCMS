@@ -15,20 +15,127 @@ body{
 }
 
 .maincontent{ /*Check the specific resolution media queries to see additional rules for this element*/
-		padding: 5%;	
+		padding: 2%;	
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border-radius: 5px; 
 		float: left;
+		min-height: 1080px;
 		background-image: url("../img/article-background.png");
 		background-repeat: repeat-x repeat-y;
 }
 
+.articleheader{
+	height: 70px;
+	/*border: 3px solid #ff8900;*/
+	border-radius: 3px;
+	padding: 15px;
+	
+}
+
+.article-header-single-page{
+	height: 100px;
+	/*border: 3px solid #ff8900;
+	border-radius: 3px;*/
+	padding: 15px;	
+}
+
+.categoryimg{
+	display: inline-block;	
+	float: left;
+	margin-right: 15px;
+	width: 100px;
+	height: 100px;
+}
+
+.categoryimg img{	
+	width: 100px;
+	height: 100px;
+}
+
+.article-excerpt{
+	/*border-left: 8px solid rgba(0,0,0,0); */
+	width: 44%;
+	float: left;
+	overflow: hidden;
+	padding: 22.5px;
+	margin: 5px;
+	border-radius: 5px;
+	max-height: 349px;
+	-webkit-transition: border-radius 0.5s, border-color 0.5s;
+    -moz-transition: border-radius 0.5s, border-color 0.5s;
+    -o-transition: border-radius 0.5s, border-color 0.5s;
+    transition: border-radius 0.5s, border-color 0.5s;   	
+}
+
+.article-excerpt-web{
+	background: rgba(255,137,0,0.75) url('../img/web-category.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+   	background-position: center;
+}
+
+.article-excerpt-android{
+	background: rgba(255,137,0,0.75) url('../img/android-category.png');
+	background-size: 80%;
+	background-repeat: no-repeat;
+   	background-position: center;
+}
+
+.article-excerpt-gamedev{
+	background: rgba(255,137,0,0.75) url('../img/gamedev-category.png');
+	background-size: 110%;
+	background-repeat: no-repeat;
+   	background-position: center;
+}
+
+.article-excerpt-misc{
+	background: rgba(255,137,0,0.75) url('../img/misc-category.png');
+	background-size: 80%;
+	background-repeat: no-repeat;
+   	background-position: center;
+}
+
+.articletitle{
+	font-size: 30px;
+	text-decoration: none;
+}
+
+.articlemetadata{
+	color: white;
+}
+
+.article-metadata-single-page{
+	position: relative;
+	top: 40px;
+	color: white;
+}
+
+.articletitle:visited {
+    color: white;
+}
+
+.articletitle:link {
+	color: white;
+}
+
 .articlecontent{
-		color: white;
-	    font-weight: 400;
-	    font-size: 18px;
-	    line-height: 24px;
-	    height: 100%;
-	    width: 100%;
+	color: white;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 24px;
+	height: 100%;
+	width: 100%;
 }	
+
+.articlesummary{
+	/*color: white;*/
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 24px;
+	height: 150px;
+	width: 100%;
+}
 
 div.articlecontent ol {
     display: block;
@@ -47,32 +154,153 @@ div.articlecontent ol li {
     position: relative;
 }
 
-.comment{
-	color: white;
+/* SINGLE PAGE COMMENTS STYLING */
+
+input[type=text] {
+    padding: 5px;
+    height: 30px;
+    width: 50%;
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 2px solid #ff8900;
+    border-radius: 4px;
+    background-color: black;
+    font-size: 16px;
+    color: white;
+}
+
+input[type=submit] {
+    height: 40px;
+    width: 40%;
+    display: block;
+    margin: auto;
+    outline: none;
+    border: 2px solid #ff8900;
+    border-radius: 4px;
+    background-color: #ff8900;
+    font-size: 16px;
+    color: black;
+}
+
+textarea{
+    padding: 5px;
+    display: block;
+    height: 200px;
+    width: 50%;
+    margin: auto;
+    outline: none;
+    border: 2px solid #ff8900;
+    border-radius: 4px;
+    background-color: black;
+    font-size: 16px;
+    color: white;
+}
+
+.comment-author-textbox{
+
+}
+
+.comment-content-textarea{
+	margin-top: 15px;
+}
+
+.single-page-comment-recaptcha{
+	display: table;
+	margin: auto;
+}
+
+/* **************************** */
+
+.comment-count{
+	color: #ff8900;
 }
 
 .approvecommentcheckbox{
 	display: inline;
 }
 
+.article-readmore{
+	position: relative;
+	display: block;
+	float: right;
+}
+
 .g-recaptcha{
 	height: 50px;
 }
+
+a:link{
+	color: black;
+}
+
+a:visited{
+	color: black;
+}
+
+.comments-number{
+	color: black;
+	margin: auto;
+	padding: 10px;
+}
+
+.pages-number{
+	color: #ff8900;
+	margin: auto;
+	display: table;
+	padding: 10px;
+}
+
+.comments-number-container{
+	display: table;
+	width: 100%;
+}
+
+/* FOOTER */
+
+.left-footer-side{
+	margin-top: 10px;
+	float: left;
+}
+
+.right-footer-side{
+	margin-top: 30px;
+	margin-right: 30px;
+	float: right;
+}
+
+.bottom-footer-side{
+	position: relative;
+	top: 35px;
+	float: left;
+	width: 100%;	
+}
+
+.bottom-footer-side p{
+	font-weight: 300;
+}
+
+.footer-list{
+	list-style: none;
+}
+
+/* ****** */
 
 @media only screen and (min-width : 761px), only screen and (min-device-width : 761px)){
 
 	.parentcontainer{
 		display: table;
-		width: 940px;
+		width: 980px;
 		margin: auto;
 	}
 
 	.maincontent{
-		width: 60%;
+		width: 940px;
 	}	
 
 	.sidebar{
-		width: 40%;
+		width: 30%;
+		margin-top: 20px;
 		height: 100%;
 		float: right;
 	}
@@ -97,6 +325,28 @@ div.articlecontent ol li {
 		margin: auto;
 	}
 
+	.mainfooter{
+		height: 200px;
+		width: 940px;
+		padding: 20px;
+		margin: auto;
+		background:rgba(255,137,0,0.75);
+		border-radius: 5px;
+	}	
+
+	.twitterfooter img:hover{
+    	opacity: 0;
+	}
+
+	.twitterfooter{
+		background-image: url('../img/twitterFooterInv.png');
+	    background-repeat: no-repeat;
+	    opacity: 1;
+	    height: 64px;
+	    width: 64px;
+	    display: block;
+	}
+
 	/*Articles*/
 
 	.articleheader{
@@ -107,13 +357,7 @@ div.articlecontent ol li {
 		width: 100%;
 		display: table;
 		float: none;
-	}
-
-	.article-readmore{
-		position: relative;
-		display: block;
-		float: left;
-	}
+	}	
 	
 }
 
