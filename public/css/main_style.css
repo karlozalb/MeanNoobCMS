@@ -207,7 +207,18 @@ textarea{
 
 .single-page-comment-recaptcha{
 	display: table;
-	margin: auto;
+	margin: auto;	
+}
+
+.comment-metadata{
+	color: white;	
+}
+
+.comment-content{
+	color: white;
+	border: 2px solid #ff8900;
+    border-radius: 4px;
+    padding: 10px;	
 }
 
 /* **************************** */
@@ -297,6 +308,10 @@ a:visited{
 	.maincontent{
 		width: 940px;
 	}	
+
+	.single-page-article-content{
+		margin: auto 12%;
+	}
 
 	.sidebar{
 		width: 30%;

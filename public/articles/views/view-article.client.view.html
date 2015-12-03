@@ -1,5 +1,5 @@
 <!-- The article view -->
-<section data-ng-controller="ArticlesController as ac" data-ng-init="findOne()">
+<section class="single-page-article-content" data-ng-controller="ArticlesController as ac" data-ng-init="findOne()">
    <header class="article-header-single-page">
             <div class="categoryimg">
                 <img ng-src="{{getCategoryImage(article.category)}}"/>
@@ -13,14 +13,14 @@
     <p class="articlecontent" ng-bind-html="article.content"></p>
     <p class="comment-count" ng-if="commentsCount > 0">Hay un total de {{commentsCount}} comentarios.</p>
     <div data-ng-repeat="comment in article.comments">              
-        <small class="comment">
-            <em>Posted on</em>
+        <small class="comment-metadata">
+            <em>Publicado el</em>
             <em data-ng-bind="comment.date | date:'medium'"></em>
-            <em>by</em>
+            <em>por</em>
             <em data-ng-bind="comment.author"></em>
         </small>
-        <p ng-if="!comment.approved" class="comment">Comentario aguardando moderación</p>  
-        <p ng-if="comment.approved" class="comment" data-ng-bind="comment.content"></p>        
+        <p ng-if="!comment.approved" class="comment-content">Comentario aguardando moderación</p>  
+        <p ng-if="comment.approved" class="comment-content" data-ng-bind="comment.content"></p>        
     </div>
     <form name="submitCommentForm" data-ng-submit="createComment()" novalidate>
         <div>
