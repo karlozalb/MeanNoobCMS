@@ -73,6 +73,14 @@ body{
 	background-size: 100%;
 	background-repeat: no-repeat;
    	background-position: center;
+   	-webkit-transition: background-size 0.5s;
+    -moz-transition: background-size 0.5s;
+    -o-transition: background-size 0.5s;
+    transition: background-size 0.5s;   	
+}
+
+.article-excerpt-web:hover{
+	background-size: 120%;
 }
 
 .article-excerpt-android{
@@ -80,6 +88,14 @@ body{
 	background-size: 80%;
 	background-repeat: no-repeat;
    	background-position: center;
+   	-webkit-transition: background-size 0.5s;
+    -moz-transition: background-size 0.5s;
+    -o-transition: background-size 0.5s;
+    transition: background-size 0.5s;   	
+}
+
+.article-excerpt-android:hover{
+	background-size: 100%;
 }
 
 .article-excerpt-gamedev{
@@ -87,6 +103,14 @@ body{
 	background-size: 110%;
 	background-repeat: no-repeat;
    	background-position: center;
+   	-webkit-transition: background-size 0.5s;
+    -moz-transition: background-size 0.5s;
+    -o-transition: background-size 0.5s;
+    transition: background-size 0.5s;   	
+}
+
+.article-excerpt-gamedev:hover{
+	background-size: 130%;
 }
 
 .article-excerpt-misc{
@@ -94,6 +118,14 @@ body{
 	background-size: 80%;
 	background-repeat: no-repeat;
    	background-position: center;
+   	-webkit-transition: background-size 0.5s;
+    -moz-transition: background-size 0.5s;
+    -o-transition: background-size 0.5s;
+    transition: background-size 0.5s;   	
+}
+
+.article-excerpt-misc:hover{
+	background-size: 100%;
 }
 
 .articletitle{
