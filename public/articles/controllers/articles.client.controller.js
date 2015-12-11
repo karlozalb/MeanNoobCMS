@@ -21,7 +21,7 @@ angular.module('articles').controller('ArticlesController', ['$scope','$rootScop
                 $scope.articles = $rootScope.articles;
                 $scope.numpages = $rootScope.pageCount;
                 $scope.currentPageNumber = $rootScope.currentPageNumber;    
-        },true);     
+        },true);
 
         // Create a new controller method for creating new articles
         $scope.create = function() {
@@ -114,7 +114,7 @@ angular.module('articles').controller('ArticlesController', ['$scope','$rootScop
         $scope.findOne = function() {
         	// Use the article 'get' method to send an appropriate GET request
 
-            $scope.article = Articles.get({
+            $rootScope.article = Articles.get({
                 articleId: $routeParams.articleId
             },function(){
                 $scope.commentsCount = $scope.article.comments.length;                

@@ -10,8 +10,9 @@ angular.module('tinymceconfig').controller('TinyMCEController', function($scope)
       // put logic here for keypress and cut/paste changes
     },
     inline: false,
-    plugins : 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste',
+    plugins : 'advlist autolink lists sh4tinymce link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table contextmenu paste',
     skin: 'lightgray',
-    theme : 'modern'
+    theme : 'modern',
+    toolbar : 'sh4tinymce'
   };
 });

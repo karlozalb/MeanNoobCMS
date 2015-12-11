@@ -10,7 +10,9 @@
                 <small data-ng-bind="article.creator.fullName"></small>
             </div>
         </header>
-    <p class="articlecontent" ng-bind-html="article.content"></p>
+
+
+    <div class="articlecontent" dynamic="article.content"></div>    
     <p class="comment-count" ng-if="commentsCount > 0">Hay un total de {{commentsCount}} comentarios.</p>
     <div data-ng-repeat="comment in article.comments">              
         <small class="comment-metadata">
