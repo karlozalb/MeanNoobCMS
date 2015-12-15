@@ -22,6 +22,8 @@ var getErrorMessage = function(err) {
 // Create a new controller method that creates new articles
 exports.create = function(req, res) {
 	// Create a new article object
+	req.body.category = req.body.category.toLowerCase();
+
 	var article = new Article(req.body);
 
 	// Set the article's 'creator' property
@@ -120,7 +122,7 @@ exports.listFromTo = function(req, res, next) {
 };
 
 exports.searchMatches = function(req, res, next) {
-	Article.paginate({$text : {$search : req.searchcriteria}}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
+	Article.paginate({$text : {$search : req.searchcriteria.toLowerCase()}}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
 		if (err) {
 			// If an error occurs send the error message
 			return res.status(400).send({
@@ -133,7 +135,7 @@ exports.searchMatches = function(req, res, next) {
 };
 
 exports.categorySearch = function(req, res, next){
-	Article.paginate({category : req.searchcriteria}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
+	Article.paginate({category : req.searchcriteria.toLowerCase()}, {page: req.page, limit: 4,populate: [{path:'comments',select:'author content date approved'}], sortBy: {created: -1}}, function(err, results, pageCount, itemCount){
 		if (err) {
 			// If an error occurs send the error message
 			return res.status(400).send({

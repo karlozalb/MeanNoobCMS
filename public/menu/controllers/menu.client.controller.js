@@ -33,7 +33,11 @@ angular.module('menu').controller('MenuController', ['$scope','$rootScope','Auth
             PaginatedCategorizedArticles.get({pageNumber: 1,searchCriteria: category},function(response){
                 $rootScope.articles = response.output;
                 $rootScope.numpages = response.pageCount;
-                $rootScope.currentPageNumber = parseInt($routeParams.pageNumber);                 
+                if ($routeParams.pageNumber == undefined){
+                	$rootScope.currentPageNumber = 1;
+                }else{
+                	$rootScope.currentPageNumber = parseInt($routeParams.pageNumber);                 
+            	}
             },function(errorResponse) {
                 // Otherwise, present the user with the error message
                 $scope.error = errorResponse.data.message;

@@ -16,5 +16,7 @@
 			<a class="comments-number"  data-ng-bind="article.comments.length"></a><a>comentario(s)</a>
 		</div>
 	</div>	
-	<div class="comments-number-container"><a class="pages-number">Página {{currentPageNumber}} de {{numpages}}</a> <a ng-if="currentPageNumber < numpages" ng-href="#!/articles/page/{{currentPageNumber+1}}">ir a la siguiente página</a></div>
+	<div class="comments-number-container"><a class="pages-number">Página {{currentPageNumber}} de {{numpages}}</a> 
+	<a ng-if="currentPageNumber < numpages" ng-href="#!/articles/page/{{currentPageNumber+1}}" class="next-page">Ir a la siguiente página</a></div>
+	<a ng-if="currentPageNumber > 1" ng-href="#!/articles/page/{{currentPageNumber-1}}" class="next-page">Ir a la página anterior</a></div>
 </section>
