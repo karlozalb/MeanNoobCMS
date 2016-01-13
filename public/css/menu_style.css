@@ -16,7 +16,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */  
  }
 
-@media only screen and (min-width : 1000px), only screen and (min-device-width : 1000px)){ 
+@media only screen and (min-width : 801px), only screen and (min-device-width : 801px)){ 
 
   #menu{
     /*display: block;*/
@@ -152,7 +152,7 @@
 
 /*Responsive Styles*/
 
-@media only screen and (max-width : 999px), only screen and (max-device-width : 999px)){
+@media only screen and (max-width : 800px), only screen and (max-device-width : 800px)){
 
   .mainnav{
     height: 60px;

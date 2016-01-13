@@ -2,10 +2,13 @@
 'use strict';
 
 // Create the 'articles' controller
-angular.module('articles').controller('ArticlesController', ['$scope','$rootScope','$routeParams','$location','vcRecaptchaService','Authentication','Articles','PaginatedArticles','Comments','SharedArticlesService',
-    function($scope,$rootScope,$routeParams,$location,vcRecaptchaService,Authentication,Articles,PaginatedArticles,Comments,SharedArticlesService) {
+angular.module('articles').controller('ArticlesController', ['$scope','$rootScope','$route','$routeParams','$location','vcRecaptchaService','Authentication','Articles','PaginatedCategorizedArticles','PaginatedArticles','Comments','SharedArticlesService',
+    function($scope,$rootScope,$route,$routeParams,$location,vcRecaptchaService,Authentication,Articles,PaginatedCategorizedArticles,PaginatedArticles,Comments,SharedArticlesService) {
     	// Expose the Authentication service
         $scope.authentication = Authentication;
+
+        var paramValue = $routeParams.param;
+        console.log(paramValue); 
 
         this.publicKey = "6LcegA8TAAAAAC0uDjhcbrUkx_ReH-UeCfFaBrrq";
 
@@ -98,16 +101,32 @@ angular.module('articles').controller('ArticlesController', ['$scope','$rootScop
         };
 
         $scope.findPaginated = function(){
-            PaginatedArticles.get({pageNumber: $routeParams.pageNumber},function(response){
-                $scope.articles = response.output;
-                //$rootScope.articles = response.output;
-                //SharedArticlesService.articles = response.output;
-                $scope.numpages = response.pageCount;
-                $scope.currentPageNumber = parseInt($routeParams.pageNumber);
-            },function(errorResponse) {
-                // Otherwise, present the user with the error message
-                $scope.error = errorResponse.data.message;
-            });
+
+            if ($routeParams.category != undefined){
+                PaginatedCategorizedArticles.get({pageNumber: $routeParams.pageNumber,searchCriteria: $routeParams.category},function(response){
+                    $rootScope.articles = response.output;
+                    $rootScope.numpages = response.pageCount;
+                    if ($routeParams.pageNumber == undefined){
+                        $rootScope.currentPageNumber = 1;
+                    }else{
+                        $rootScope.currentPageNumber = parseInt($routeParams.pageNumber);                 
+                    }
+                },function(errorResponse) {
+                    // Otherwise, present the user with the error message
+                    $scope.error = errorResponse.data.message;
+                });
+            }else{
+                PaginatedArticles.get({pageNumber: $routeParams.pageNumber},function(response){
+                    $scope.articles = response.output;
+                    //$rootScope.articles = response.output;
+                    //SharedArticlesService.articles = response.output;
+                    $scope.numpages = response.pageCount;
+                    $scope.currentPageNumber = parseInt($routeParams.pageNumber);
+                },function(errorResponse) {
+                    // Otherwise, present the user with the error message
+                    $scope.error = errorResponse.data.message;
+                });
+            }
         }        
 
         // Create a new controller method for retrieving a single article

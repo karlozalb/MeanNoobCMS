@@ -24,7 +24,7 @@
         <p ng-if="!comment.approved" class="comment-content">Comentario aguardando moderación</p>  
         <p ng-if="comment.approved" class="comment-content" data-ng-bind="comment.content"></p>        
     </div>
-    <form name="submitCommentForm" data-ng-submit="createComment()" novalidate>
+    <form ng-if="article.commentsEnabled" name="submitCommentForm" data-ng-submit="createComment()" novalidate>
         <div>
             <!--<label for="author">Autor:</label>-->
             <div>

@@ -2,10 +2,10 @@
 'use strict';
 
 // Create the 'example' controller
-angular.module('menu').controller('MenuController', ['$scope','$rootScope','Authentication','Articles','PaginatedCategorizedArticles','$routeParams',
-	function($scope,$rootScope,Authentication,$routeParams,PaginatedCategorizedArticles) {
+angular.module('menu').controller('MenuController', ['$scope','$rootScope','Authentication','$routeParams',
+	function($scope,$rootScope,Authentication,$routeParams) {
 		// Expose the authentication service
-		$scope.Authentication = Authentication;
+		$scope.Authentication = Authentication;		
 
 		$scope.getMenuInclude = function() {
 			if ($scope.Authentication.user){
@@ -29,8 +29,9 @@ angular.module('menu').controller('MenuController', ['$scope','$rootScope','Auth
 			}
 		};
 
-		$scope.searchArticles = function(category){
+		/*$scope.searchArticles = function(category){			
             PaginatedCategorizedArticles.get({pageNumber: 1,searchCriteria: category},function(response){
+            	$location.path('articles/page/1');
                 $rootScope.articles = response.output;
                 $rootScope.numpages = response.pageCount;
                 if ($routeParams.pageNumber == undefined){
@@ -42,6 +43,6 @@ angular.module('menu').controller('MenuController', ['$scope','$rootScope','Auth
                 // Otherwise, present the user with the error message
                 $scope.error = errorResponse.data.message;
             });
-        }; 
+        };*/
 	}
 ]);

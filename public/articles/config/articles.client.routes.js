@@ -8,7 +8,10 @@ angular.module('articles').config(['$routeProvider',
 		when('/', {
 			redirectTo: '/articles/page/1',
 			templateUrl: 'articles/views/excerpt-article-list.client.view.html'
-		}).	
+		}).
+		when('/articles/bycategory/:category/page/:pageNumber', {
+			templateUrl: 'articles/views/excerpt-article-list.client.view.html'
+		}).
 		when('/articles/page/:pageNumber', {
 			templateUrl: 'articles/views/excerpt-article-list.client.view.html'
 		}).	

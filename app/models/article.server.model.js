@@ -39,7 +39,11 @@ var ArticleSchema = new Schema({
 	},
 	tags: [{tag: String}],
 	comments: [{type: Schema.ObjectId,
-				ref: 'Comment'}]
+				ref: 'Comment'}],
+	commentsEnabled: {
+		type: Boolean,
+		default: true
+	}
 });
 
 ArticleSchema.plugin(mongoosePaginate);

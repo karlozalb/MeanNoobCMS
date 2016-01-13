@@ -2,7 +2,7 @@
 
 * {
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 body{
@@ -29,8 +29,11 @@ body{
 	height: 70px;
 	/*border: 3px solid #ff8900;*/
 	border-radius: 3px;
-	padding: 15px
-	
+	padding: 15px	
+}
+
+body > div > section > section > div > header > a{
+	font-weight: 500;
 }
 
 .article-header-single-page{
@@ -137,9 +140,7 @@ body{
 	color: white;
 }
 
-.article-metadata-single-page{
-	position: relative;
-	top: 40px;
+.article-metadata-single-page{	
 	color: white;
 }
 
@@ -153,8 +154,8 @@ body{
 
 .articlecontent{
 	color: white;
-	font-weight: 400;
-	font-size: 18px;
+	font-weight: 300;
+	font-size: 16px;
 	line-height: 24px;
 	height: 100%;
 	width: 100%;
@@ -316,7 +317,7 @@ body > div > section > section > div > a{
 	color: #ff8900;
 	margin: auto;
 	display: table;
-	padding: 10px;
+	padding: 10px 0;
 	width: 100%;
 	float: left;
 	text-align: center;
@@ -371,6 +372,11 @@ body > div > section > section > div > a{
 
 	.single-page-article-content{
 		margin: auto 12%;
+	}
+
+	.article-metadata-single-page{
+		position: relative;
+		top: 40px;
 	}
 
 	.sidebar{
@@ -448,6 +454,14 @@ body > div > section > section > div > a{
 			margin: auto;
 	}
 
+	.articlecontent{
+		font-size: 12px;
+	}
+
+	.categoryimg{
+		display: none;
+	}
+
 	.parentcontainer{
 		display: table;
 		width: 100%;
@@ -457,9 +471,127 @@ body > div > section > section > div > a{
 		display: none;
 	}
 
-	.maincontent{
-		width: 100%;		
+	.articleheader{
+		height: 55px;
+		border-radius: 3px;
+		padding: 15px;		
+	}
+
+	.single-page-article-content{
+		margin: auto 5%;
+	}
+
+	.article-excerpt{
+		width: 90%;
+		float: none;
+		overflow: hidden;
+		padding: 5%;
+		margin: 5px auto;
+		border-radius: 5px;
+		max-height: 349px;
+		-webkit-transition: border-radius 0.5s, border-color 0.5s;
+	    -moz-transition: border-radius 0.5s, border-color 0.5s;
+	    -o-transition: border-radius 0.5s, border-color 0.5s;
+	    transition: border-radius 0.5s, border-color 0.5s;   	
+	}
+
+	.maincontent{ /*Check the specific resolution media queries to see additional rules for this element*/
+		padding: 0%;	
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border-radius: 5px; 
+		float: left;
+		min-height: 1080px;
+		width: 100%;
+		background-image: url("../img/article-background.png");
+		background-repeat: repeat-x repeat-y;
+	}
+
+	.mainfooter{
+		height: 240px;
+		width: 95%;
+		padding: 2.5%;
+		margin: auto;
+		background:rgba(255,137,0,0.75);
+		border-radius: 5px;
 	}	
+
+	.mainfooter ul a{
+		font-size: 16px;
+	}
+
+	.mainfooter p{
+		font-size: 12px;
+	}	
+
+	input[type=submit],
+	input[type=text] {
+		width: 90%;
+	}
+
+	textarea{
+		width: 90%;
+	}
+
+	.article-excerpt-web{
+		background: rgba(255,137,0,0.75) url('../img/web-category.png');
+		background-size: 80%;
+		background-repeat: no-repeat;
+	   	background-position: center;
+	   	-webkit-transition: background-size 0.5s;
+	    -moz-transition: background-size 0.5s;
+	    -o-transition: background-size 0.5s;
+	    transition: background-size 0.5s;   	
+	}
+
+	.article-excerpt-web:hover{
+		background-size: 80%;
+	}
+
+	.article-excerpt-android{
+		background: rgba(255,137,0,0.75) url('../img/android-category.png');
+		background-size: 70%;
+		background-repeat: no-repeat;
+	   	background-position: center;
+	   	-webkit-transition: background-size 0.5s;
+	    -moz-transition: background-size 0.5s;
+	    -o-transition: background-size 0.5s;
+	    transition: background-size 0.5s;   	
+	}
+
+	.article-excerpt-android:hover{
+		background-size: 70%;
+	}
+
+	.article-excerpt-gamedev{
+		background: rgba(255,137,0,0.75) url('../img/gamedev-category.png');
+		background-size: 90%;
+		background-repeat: no-repeat;
+	   	background-position: center;
+	   	-webkit-transition: background-size 0.5s;
+	    -moz-transition: background-size 0.5s;
+	    -o-transition: background-size 0.5s;
+	    transition: background-size 0.5s;   	
+	}
+
+	.article-excerpt-gamedev:hover{
+		background-size: 90%;
+	}
+
+	.article-excerpt-misc{
+		background: rgba(255,137,0,0.75) url('../img/misc-category.png');
+		background-size: 70%;
+		background-repeat: no-repeat;
+	   	background-position: center;
+	   	-webkit-transition: background-size 0.5s;
+	    -moz-transition: background-size 0.5s;
+	    -o-transition: background-size 0.5s;
+	    transition: background-size 0.5s;   	
+	}
+
+	.article-excerpt-misc:hover{
+		background-size: 70%;
+	}
 }
 
 @media only screen and (max-width : 760px), only screen and (max-device-width : 760px)){
