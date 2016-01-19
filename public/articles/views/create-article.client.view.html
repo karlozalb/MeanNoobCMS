@@ -29,8 +29,8 @@
 		</div>
 		<div>
 			<label for="content">Content</label>
-			<div>
-				<textarea ui-tinymce="tinymceOptions" data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+			<div ng-controller="TinyMCEConfigController">
+				<textarea ui-tinymce="tinymceOptions" id="content" data-ng-model="content" cols="30" rows="10" placeholder="Content"></textarea>
 			</div>
 		</div>
 		<div>

@@ -12,8 +12,12 @@
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500' rel='stylesheet' type='text/css'> <!--UBUNTU FONT! from Google Fonts-->
 	<link rel="stylesheet" type="text/css" href="/css/main_style.css">
 	<link rel="stylesheet" type="text/css" href="/css/menu_style.css">
+
+	<!--<link rel="stylesheet" type="text/css" href="/lib/syntaxhighlighter_3.0.83/styles/shCore.css">
+	<link rel="stylesheet" type="text/css" href="/lib/syntaxhighlighter_3.0.83/styles/shThemeDefault.css">-->
+
 	<link rel="stylesheet" type="text/css" href="/prism/prism.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/obsidian.min.css">
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/obsidian.min.css">-->
 	<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>	
 </head>
 <body>	
@@ -26,6 +30,11 @@
 	<script type="text/javascript" src="/lib/angular-ui-tinymce/src/tinymce.js"></script>
 	<script type="text/javascript" src="/lib/angular-sanitize/angular-sanitize.js"></script>
 	<script type="text/javascript" src="/lib/angular-recaptcha/release/angular-recaptcha.min.js"></script>
+	<!--<script type="text/javascript" src="/lib/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>-->
+
+	<!-- Brushes -->
+	<!--<script type="text/javascript" src="/lib/syntaxhighlighter_3.0.83/scripts/shBrushJava.js"></script>-->
+
 	
 	<!-- Load the articles module -->
 	<script type="text/javascript" src="/articles/articles.client.module.js"></script>
@@ -34,10 +43,10 @@
 	<script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>
 	<script type="text/javascript" src="/articles/directives/articles.client.directive.js"></script>
 
-	<!--<script type="text/javascript" src="/prism/prism.js"></script>
-	<script type="text/javascript" src="/prism/prism.directive.client.js"></script>-->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-	<script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+	<script type="text/javascript" src="/prism/prism.js"></script>
+	<script type="text/javascript" src="/prism/prism.client.directives.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+	<script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>-->
 
 	<!-- Load the menu module -->
 	<script type="text/javascript" src="/menu/menu.client.module.js"></script>
@@ -48,7 +57,7 @@
 	<script type="text/javascript" src="/maincontent/maincontent.client.module.js"></script>
 
 	<!-- Load TinyMCE configuration -->
-	<script type="text/javascript" src="/tinymce/tinymce.client.controller.js"></script>
+	<!--<script type="text/javascript" src="/tinymce/tinymce.client.controller.js"></script>-->
 
 	
 
@@ -99,6 +108,12 @@
 		</div>
 		<div class="right-footer-side">
 			<a class="twitterfooter" href="http://twitter.com/karlozalb"><img ng-src="/img/twitterFooter.png"></a>
+		</div>
+		<div class="right-footer-side">
+			<a class="linkedinfooter" href="https://es.linkedin.com/in/carlos-albaladejo-perez-8a19a136"><img ng-src="/img/linkedinFooter.png"></a>
+		</div>
+		<div class="right-footer-side">
+			<a class="githubfooter" href="https://github.com/karlozalb"><img ng-src="/img/githubFooter.png"></a>
 		</div>
 		<div class="bottom-footer-side">
 			<p>Página creada usando un stack MEAN por Carlos Albaladejo Pérez. Más info <a href="http://projectclean.asuscomm.com/#!/articles/5677f124b1a5433b02524749">aquí</a>.</p>

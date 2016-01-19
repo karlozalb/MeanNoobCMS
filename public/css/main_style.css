@@ -428,6 +428,32 @@ body > div > section > section > div > a{
 	    display: block;
 	}
 
+	.linkedinfooter img:hover{
+    	opacity: 0;
+	}
+
+	.linkedinfooter{
+		background-image: url('../img/linkedinFooterInv.png');
+	    background-repeat: no-repeat;
+	    opacity: 1;
+	    height: 64px;
+	    width: 64px;
+	    display: block;
+	}
+
+	.githubfooter img:hover{
+    	opacity: 0;
+	}
+
+	.githubfooter{
+		background-image: url('../img/githubFooterInv.png');
+	    background-repeat: no-repeat;
+	    opacity: 1;
+	    height: 64px;
+	    width: 64px;
+	    display: block;
+	}
+
 	/*Articles*/
 
 	.articleheader{

@@ -4,7 +4,7 @@ angular.module('Prism', []).
             restrict: 'A',
             link: function ($scope, element, attrs) {
                 element.ready(function() {
-                    Prism.highlightElement(element[0]);
+                    Prism.highlightAll();
                 });
             }
         } 

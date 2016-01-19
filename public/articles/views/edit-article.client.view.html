@@ -29,7 +29,7 @@
 		</div>
 		<div>
 			<label for="content">Content</label>
-			<div>
+			<div ng-controller="TinyMCEConfigController">
 				<textarea ui-tinymce="tinymceOptions" data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
 			</div>
 		</div>

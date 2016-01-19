@@ -246,7 +246,7 @@ angular.module('articles').controller('ArticlesController', ['$scope','$rootScop
             }else if (categoryUpper == "MISC"){
                 main = "misc";
             }else if (categoryUpper == "GAMEDEV"){
-                main = "gamedev";
+                main = "gamedev-small";
             }
 
             return prefix+main+suffix;
