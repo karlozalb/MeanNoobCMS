@@ -307,8 +307,8 @@ body > div > section > section > div > a{
 
 .next-page{
 	color: #ff8900;
-	width: 100%;
-	padding: 10px;
+	width: 95%;
+	padding: 2.5%;
 	float: left;
 	text-align: center;
 }
@@ -335,10 +335,14 @@ body > div > section > section > div > a{
 	float: left;
 }
 
+.content-block-right-footer{
+	float: right;
+}
+
 .right-footer-side{
 	margin-top: 30px;
 	margin-right: 30px;
-	float: right;
+	float: left;
 }
 
 .bottom-footer-side{
@@ -637,6 +641,11 @@ body > div > section > section > div > a{
 		padding: 15px;		
 	}
 
+	.articletitle{
+		font-size: 22px;
+		text-decoration: none;
+	}
+
 	.article-excerpt{
 		width: 90%;
 		float: none;
@@ -662,8 +671,18 @@ body > div > section > section > div > a{
 		background-repeat: repeat-x repeat-y;
 	}
 
+	.content-block-right-footer{
+		float: left;
+		width: 75%;
+		margin: 0 12.5%;
+	}
+
+	body > footer > div.content-block-right-footer > div:nth-child(3){
+		margin-right: 0px;
+	}
+
 	.mainfooter{
-		height: 240px;
+		height: 300px;
 		width: 95%;
 		padding: 2.5%;
 		margin: auto;
